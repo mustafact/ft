@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Tanya Cars</title>
+</head>
+
+<body>
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body" id="modal-edit-one-customer">
+
+                    <input id="modal-input-brand" placeholder="brand">
+                    <hr>
+                    <input id="modal-input-name" placeholder="name">
+                    <hr>
+                    <input id="modal-input-amount" placeholder="amount">
+                    <hr>
+                    <input id="modal-input-date" placeholder="date">
+                    <hr>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="button-modal-close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="button-modal-save" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete this data?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body" id="modal-delete-one-customer">
+
+                    <h5 id="modal-delete-brand"></h5>
+                    <hr>
+                    <h5 id="modal-delete-name"></h5>
+                    <hr>
+                    <h5 id="modal-delete-amount"></h5>
+                    <hr>
+                    <h5 id="modal-delete-date"></h5>
+                    <hr>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="button-modal-delete-decline" class="btn btn-secondary" data-dismiss="modal"> No </button>
+                    <button type="button" id="button-modal-delete-confirm" class="btn btn-danger" data-dismiss="modal"> Yes </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="container add">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Cars</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <span class="nav-link dropdown-toggle" id="add-button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</span>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item add-cars" href="#">Toyota</a>
+                            <a class="dropdown-item add-cars" href="#">Audi</a>
+                            <a class="dropdown-item add-cars" href="#">Tesla</a>
+                            <a class="dropdown-item add-cars" href="#">Honda</a>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" id="input-search-brand" type="search" placeholder="Brand">
+                    <input class="form-control mr-sm-2" id="input-search-name" type="search" placeholder="Name">
+                    <input class="form-control mr-sm-2" id="input-search-date" type="search" placeholder="YY-MM-DD">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="button-search" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <br>
+        <br>
+
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <table class="table d-none" id="data-table-global">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="data-table-head">Brand</th>
+                            <th scope="col" class="data-table-head">Name</th>
+                            <th scope="col" class="data-table-head">Amount</th>
+                            <th scope="col" class="data-table-head">Date</th>
+                            <th scope="col" class="data-table-head">Id</th>
+                            <th scope="col" class="data-table-head">E</th>
+                            <th scope="col" class="data-table-head">D</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table">
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-12">
+                <div id="form-add-cars" class="d-none">
+
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Date</div>
+                                </div>
+                                <input type="text" id="input-add-cars-date" class="form-control" placeholder="YY-MM-DD">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="input-group-prepend">
+                        <button type="button" id="textarea-add-cars-button" class="btn btn-light button-add"></button>
+                        <textarea class="form-control" id="textarea-add-cars" aria-label="With textarea" rows="10" placeholder="paste customers"></textarea>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
