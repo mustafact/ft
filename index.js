@@ -233,6 +233,7 @@ class Cars {
 
 
         if (event.target.id === "button-search") {
+            event.preventDefault();
 
             console.log(this.allCars);
 
