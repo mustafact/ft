@@ -178,6 +178,7 @@ class Cars {
             $(".table").addClass("d-none");
             $("#div-cards").addClass("d-none");
             $("#form-add-cars").addClass("d-none");
+            $("#form-nav-search").addClass("d-none");
 
         });
 
