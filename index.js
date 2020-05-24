@@ -197,6 +197,7 @@ class Cars {
 
     adjustInstanceOfAddCarBrand(event) {
         if (event.target.classList.contains("add-cars")) {
+            this.$formNavSearch.classList.add("d-none");
             this.instanceOfAddCarBrand = event.target.textContent; // determine the car brand selector
             //this.$textareaAddCarsButton.textContent = this.instanceOfAddCarBrand; // adjust the brand name on the button
             this.$textareaAddCars.placeholder = `paste ${this.instanceOfAddCarBrand} customers from excel in the format: \nname | amount\nname | amount\n...\n...`; // adjusting the placeholder dynanically
@@ -323,6 +324,7 @@ class Cars {
     isInputDataValid(event) {
 
         if (event.target.id === "textarea-add-cars-button") {
+
 
 
             let dateInput = this.$inputAddCarsDate.value;
