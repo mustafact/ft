@@ -78,49 +78,57 @@
 
     <div class="container add">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-brand btn btn-light" type="button" id="button-navbar-brand-reload" href="#">🚘</button>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <div class="row">
+
+            <div class="col-12">
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-brand btn btn-light" type="button" id="button-navbar-brand-reload" href="#">🚘</button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
 
 
-                    <li class="nav-item dropdown" id="my-dropdown">
-                        <span class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</span>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item add-cars" href="#">Toyota</a>
-                            <a class="dropdown-item add-cars" href="#">Audi</a>
-                            <a class="dropdown-item add-cars" href="#">Tesla</a>
-                            <a class="dropdown-item add-cars" href="#">Honda</a>
-                        </div>
-                    </li>
+                            <li class="nav-item dropdown" id="my-dropdown">
+                                <span class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</span>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item add-cars" href="#">Toyota</a>
+                                    <a class="dropdown-item add-cars" href="#">Audi</a>
+                                    <a class="dropdown-item add-cars" href="#">Tesla</a>
+                                    <a class="dropdown-item add-cars" href="#">Honda</a>
+                                </div>
+                            </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link" id="button-nav-report" href="#">Report</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="button-nav-report" href="#">Report</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" id="button-nav-list" href="#">List</a>
-                    </li>
-
-
+                            <li class="nav-item">
+                                <a class="nav-link" id="button-nav-list" href="#">List</a>
+                            </li>
 
 
-                </ul>
 
-                <form class="form-inline my-2 my-lg-0 d-none" id="form-nav-search">
-                    <input class="form-control mr-sm-2" id="input-search-brand" type="search" placeholder="Brand">
-                    <input class="form-control mr-sm-2" id="input-search-name" type="search" placeholder="Name">
-                    <input class="form-control mr-sm-2" id="input-search-date" type="search" placeholder="YY-MM-DD">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id="button-search" type="submit">Search</button>
-                </form>
+
+                        </ul>
+
+                        <form class="form-inline my-2 my-lg-0 d-none" id="form-nav-search">
+                            <input class="form-control mr-sm-2" id="input-search-brand" type="search" placeholder="Brand">
+                            <input class="form-control mr-sm-2" id="input-search-name" type="search" placeholder="Name">
+                            <input class="form-control mr-sm-2" id="input-search-date" type="search" placeholder="YY-MM-DD">
+                            <button class="btn btn-outline-success my-2 my-sm-0" id="button-search" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+
             </div>
-        </nav>
 
+        </div>
 
         <br>
 
@@ -131,7 +139,7 @@
 
             <div class="col-12">
 
-                <table class="table d-none" id="data-table-global">
+                <table class="table d-none">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
