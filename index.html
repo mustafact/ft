@@ -79,15 +79,20 @@
     <div class="container add">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Add</a>
+            <a class="navbar-brand" href="#">Cars</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="button-nav-see" href="#">List</a>
+                    </li>
+
                     <li class="nav-item dropdown">
-                        <span class="nav-link dropdown-toggle" id="add-button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select</span>
+                        <span class="nav-link dropdown-toggle" id="add-button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</span>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item add-cars" href="#">Toyota</a>
                             <a class="dropdown-item add-cars" href="#">Audi</a>
@@ -99,7 +104,7 @@
 
                 </ul>
 
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0 d-none" id="form-nav-search">
                     <input class="form-control mr-sm-2" id="input-search-brand" type="search" placeholder="Brand">
                     <input class="form-control mr-sm-2" id="input-search-name" type="search" placeholder="Name">
                     <input class="form-control mr-sm-2" id="input-search-date" type="search" placeholder="YY-MM-DD">
@@ -108,11 +113,13 @@
             </div>
         </nav>
 
-        <br>
+
         <br>
 
 
         <div class="row">
+
+
 
             <div class="col-12">
 
@@ -136,6 +143,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -150,14 +158,16 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Date</div>
                                 </div>
-                                <input type="text" id="input-add-cars-date" class="form-control" placeholder="YY-MM-DD">
+                                <input type="text" id="input-add-cars-date" class="form-control" placeholder="yy-mm-dd">
                             </div>
                         </div>
                     </form>
-                    <div class="input-group-prepend">
-                        <button type="button" id="textarea-add-cars-button" class="btn btn-light button-add"></button>
-                        <textarea class="form-control" id="textarea-add-cars" aria-label="With textarea" rows="10" placeholder="paste customers"></textarea>
 
+
+
+                    <div class="input-group-prepend">
+                        <button type="button" id="textarea-add-cars-button" class="btn btn-light button-add">Go!!</button>
+                        <textarea class="form-control" id="textarea-add-cars" aria-label="With textarea" rows="10" placeholder="paste customers"></textarea>
                     </div>
 
                 </div>
@@ -171,6 +181,7 @@
 
 
     </div>
+
 
 
 
