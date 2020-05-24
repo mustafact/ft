@@ -331,7 +331,7 @@ class Cars {
             } else {
 
                 this.isDateValid = false;
-                alert("date not correct");
+                alert("please enter a valid date");
 
             }
 
@@ -346,7 +346,7 @@ class Cars {
                 this.isFormValid = true;
             } else {
                 this.isFormValid = false;
-                alert("form not correct");
+                alert("please enter customers in valid form");
 
             }
 
@@ -358,13 +358,20 @@ class Cars {
 
             if (this.isDateValid && this.isFormValid) {
 
-                this.transformDateEntered(); // ok
+                let answer = confirm("add these customers?")
 
-                this.transformDataEnteredIntoTextareaIntoArrayOfObjects();
+                if (answer === true) {
 
-                console.log(this.allCars);
+                    this.transformDateEntered(); // ok
 
-                this.saveData();
+                    this.transformDataEnteredIntoTextareaIntoArrayOfObjects();
+
+                    this.saveData();
+
+                } else {
+                    return;
+                }
+
 
             } else {
                 console.log("INCOMPLETE DATA!!!");
@@ -429,10 +436,7 @@ class Cars {
                 veri.brand.includes(brandString)).filter(veri =>
                 veri.name.includes(nameString)).filter(veri => veri.date.includes(dateString));
 
-            // intance of data is different from the all cars data so...
 
-
-            //Data = [...filtered];
 
 
             this.renderData(filtered);
@@ -466,7 +470,7 @@ class Cars {
             <td class="one-customer" data-id="${item.id}">${item.amount}</td>
             <td class="one-customer" data-id="${item.id}">${item.date}</td>
             <td class="one-customer" data-id="${item.id}">${item.id}</td>
-            <td class="one-customer edit-one-customer" data-toggle="modal" data-target="#editModal" data-id="${item.id}">✍︎</td>
+            <td class="one-customer edit-one-customer" data-toggle="modal" data-target="#editModal" data-id="${item.id}">✏️</td>
             <td class="one-customer delete-one-customer" data-toggle="modal" data-target="#deleteModal" data-id="${item.id}">❌</td>
         </tr>
         `
@@ -483,10 +487,10 @@ class Cars {
 
     filterData() {
 
-        console.log("filter called");
+
 
         if (!this.allCars.length > 0) {
-            alert("there are no customers yet");
+            alert("no customers... please add some");
             return;
         }
 
@@ -500,7 +504,7 @@ class Cars {
         let nameString = this.$inputSearchName.value.toLowerCase();
         let dateString = this.$inputSearchDate.value.toLowerCase();
 
-        console.log(brandString, nameString, dateString);
+
 
 
 
@@ -509,11 +513,7 @@ class Cars {
             veri.brand.includes(brandString)).filter(veri =>
             veri.name.includes(nameString)).filter(veri => veri.date.includes(dateString));
 
-        // intance of data is different from the all cars data so...
 
-        console.log(filtered);
-
-        //this.instantFilteredData = [...filtered];
 
         this.renderData(filtered);
 
@@ -559,7 +559,7 @@ class Cars {
 
             this.filterData();
 
-            //this.renderData(this.allCars);
+
 
 
 
@@ -708,7 +708,7 @@ class Cars {
 
     deletingSelectedCustomerViaModal(event) {
 
-        //event.stopPropagation();
+
 
         if (event.target.id === "button-modal-delete-confirm") {
 
