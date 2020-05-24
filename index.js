@@ -89,9 +89,11 @@ class Cars {
         this.$divCards = document.querySelector("#div-cards");
 
 
+        this.$buttonNavbarBrandReload = document.querySelector("#button-navbar-brand-reload");
 
+        this.$buttonAdd = document.querySelector("#button-add");
 
-
+        this.$myDropdown = document.querySelector("#my-dropdown");
 
 
 
@@ -139,15 +141,16 @@ class Cars {
 
             this.deletingSelectedCustomerViaModal(event);
 
+            this.navbarDeneme(event);
 
-            this.makeBrandCardAfterCalculations(event)
+            this.makeBrandCardAfterCalculations(event);
 
 
             this.sortData(event);
 
             //this.filterData();
 
-
+            this.handleDropDown();
 
             this.handleListButtonClickOnNavbar(event);
 
@@ -156,7 +159,30 @@ class Cars {
 
 
 
+    navbarDeneme(event) {
 
+        if (event.target.id === "button-navbar-brand-reload") {
+            location.reload();
+        }
+
+
+    }
+
+
+    handleDropDown() {
+
+
+
+
+        $('#my-dropdown').on('show.bs.dropdown', function() {
+            $(".table").addClass("d-none");
+            $("#div-cards").addClass("d-none");
+            $("#form-add-cars").addClass("d-none");
+
+        });
+
+
+    }
 
 
 
