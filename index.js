@@ -588,20 +588,39 @@ class Cars {
 
             let sortBy = event.target.textContent.toLowerCase();
 
-            console.log(sortBy);
 
-            this.allCars.sort((a, b) => {
-                if (this.sortOrder === true) {
 
-                    return a[sortBy] - b[sortBy];
 
-                } else if (this.sortOrder === false) {
+            if (sortBy === "amount") {
 
-                    return b[sortBy] - a[sortBy];
+                this.allCars.sort((a, b) => {
+                    if (this.sortOrder === true) {
 
-                }
+                        return a[sortBy] - b[sortBy];
 
-            });
+                    } else if (this.sortOrder === false) {
+
+                        return b[sortBy] - a[sortBy];
+
+                    }
+
+                });
+
+            } else if (sortBy === "brand" || sortBy === "name" || sortBy === "date" || sortBy === "id") {
+
+                this.allCars.sort((a, b) => {
+                    if (this.sortOrder === true) {
+                        if (a[sortBy] < b[sortBy]) return -1;
+                        if (a[sortBy] > b[sortBy]) return 1;
+                        return 0;
+                    } else if (this.sortOrder === false) {
+                        if (a[sortBy] > b[sortBy]) return -1;
+                        if (a[sortBy] < b[sortBy]) return 1;
+                        return 0;
+                    }
+
+                });
+            }
 
             this.filterData();
 
