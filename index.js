@@ -164,9 +164,9 @@ class Cars {
         if (event.target.id === "button-navbar-brand-reload") {
             location.reload();
         }
-
-
     }
+
+
 
 
     handleDropDown() {
@@ -814,9 +814,10 @@ class Cars {
 
         let htmlCardToDisplay =
             `
+         
 <div class="card" style="width: 18rem;">
   <div class="card-header">
-    ${brand}
+    ${brand.charAt(0).toUpperCase() + brand.slice(1)} 
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Total Sales : ${totalSales}</li>
@@ -825,7 +826,7 @@ class Cars {
     <li class="list-group-item">Total Customers Not Paid : ${howManyNotPaid} </li>
   </ul>
 </div>
-<hr>
+<br>
 `
 
         //console.log(htmlCardToDisplay)
