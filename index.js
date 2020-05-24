@@ -814,6 +814,11 @@ class Cars {
 
         if (event.target.id === "button-nav-report") {
 
+            if (!this.allCars.length > 0) {
+                alert("no customers yet... plase add some customers");
+                return;
+            }
+
             this.$inputAddCarsForm.classList.add("d-none");
             this.$divCards.classList.toggle("d-none");
             this.$table.classList.add("d-none");
