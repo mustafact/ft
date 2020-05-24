@@ -6,7 +6,8 @@ class Cars {
     constructor() {
 
         this.allCars = this.notes = JSON.parse(localStorage.getItem('cars')) || [];
-        //this.instanceOfCars = [];
+
+
         this.instanceOfAddCarBrand = "";
         this.instanceOfCarId = "";
         this.instanceOfAddCarDate = "";
@@ -78,12 +79,23 @@ class Cars {
         this.$modalDeleteDate = document.querySelector("#modal-delete-date");
 
 
-        this.$buttonNavSee = document.querySelector("#button-nav-see");
+        this.$buttonNavList = document.querySelector("#button-nav-list");
 
 
         this.$formNavSearch = document.querySelector("#form-nav-search");
 
-        this.calculations();
+
+        this.$buttonNavReport = document.querySelector("#button-nav-report");
+        this.$divCards = document.querySelector("#div-cards");
+
+
+
+
+
+
+
+
+        //this.calculations(this.allCars, "toyota");
         this.saveData();
         this.addEventListeners();
 
@@ -128,7 +140,7 @@ class Cars {
             this.deletingSelectedCustomerViaModal(event);
 
 
-
+            this.makeBrandCardAfterCalculations(event)
 
 
             this.sortData(event);
@@ -137,7 +149,7 @@ class Cars {
 
 
 
-            this.handleSeeButtonClickOnNavbar(event);
+            this.handleListButtonClickOnNavbar(event);
 
         });
     }
@@ -153,14 +165,15 @@ class Cars {
 
 
 
-    handleSeeButtonClickOnNavbar(event) {
-        if (event.target.id === "button-nav-see") {
+    handleListButtonClickOnNavbar(event) {
+        if (event.target.id === "button-nav-list") {
             event.preventDefault();
             this.$formNavSearch.classList.toggle("d-none");
             this.$inputAddCarsForm.classList.add("d-none");
+            this.$divCards.classList.add("d-none");
             console.log("search clicked");
             if (this.allCars.length > 0) {
-                this.$table.classList.remove("d-none");
+                this.$table.classList.toggle("d-none");
             }
 
             this.renderData(this.allCars);
@@ -189,6 +202,7 @@ class Cars {
             this.$textareaAddCars.placeholder = `paste ${this.instanceOfAddCarBrand} customers from excel in the format: \nname | amount\nname | amount\n...\n...`; // adjusting the placeholder dynanically
             this.$inputAddCarsForm.classList.remove("d-none");
             this.$table.classList.add("d-none");
+            this.$divCards.classList.add("d-none");
         }
     }
 
@@ -421,6 +435,7 @@ class Cars {
 
             this.$inputAddCarsForm.classList.add("d-none");
             this.$table.classList.remove("d-none");
+            this.$divCards.classList.add("d-none");
 
 
             let brandString = this.$inputSearchBrand.value.toLowerCase();
@@ -436,7 +451,9 @@ class Cars {
                 veri.brand.includes(brandString)).filter(veri =>
                 veri.name.includes(nameString)).filter(veri => veri.date.includes(dateString));
 
-
+            if (filtered.length === 0) {
+                this.$table.classList.add("d-none");
+            }
 
 
             this.renderData(filtered);
@@ -736,21 +753,85 @@ class Cars {
 
 
 
-    // CALCULATIONS
+    // CALCULATIONS and REPORT
 
 
-    calculations() {
+    calculations(array, brand) {
 
-        let totalSales = this.allCars.reduce((acc, curr) => {
+        // let totalSales = array.reduce((acc, curr) => {
+        //     return acc + Number(curr.amount)
+        // }, 0)
+
+
+        let totalSales = array.filter(item => item.brand === brand).
+        reduce((acc, curr) => {
             return acc + Number(curr.amount)
         }, 0)
 
+        let howManyCustomersPaidOrNotPaidAltogether = array.filter(item => item.brand === brand).length
 
-        let totalSalesToyota = this.allCars.filter(item => item.brand === "toyota").reduce((acc, curr) => {
+        let totalNotPaid = array.filter(item => item.brand === brand).
+        filter(item => item.name.includes("%")).
+        reduce((acc, curr) => {
             return acc + Number(curr.amount)
         }, 0)
 
-        console.log(totalSales, totalSalesToyota);
+        let howManyNotPaid = array.filter(item => item.brand === brand).
+        filter(item => item.name.includes("%")).length
+
+        console.log(totalSales, howManyCustomersPaidOrNotPaidAltogether, totalNotPaid, howManyNotPaid, );
+
+        console.log(this.allCars.filter(item => item.brand === brand))
+
+
+        let htmlCardToDisplay =
+            `
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    ${brand}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Total Sales : ${totalSales}</li>
+    <li class="list-group-item">Total Customers : ${howManyCustomersPaidOrNotPaidAltogether}</li>
+    <li class="list-group-item">Total Amount Not Paid : ${totalNotPaid}</li>
+    <li class="list-group-item">Total Customers Not Paid : ${howManyNotPaid} </li>
+  </ul>
+</div>
+<hr>
+`
+
+        //console.log(htmlCardToDisplay)
+
+        return htmlCardToDisplay
+
+
+    }
+
+
+    // we need to also run this fn when we update the data (edit, delete functions)
+
+    makeBrandCardAfterCalculations(event) {
+
+        if (event.target.id === "button-nav-report") {
+
+            this.$inputAddCarsForm.classList.add("d-none");
+            this.$divCards.classList.toggle("d-none");
+            this.$table.classList.add("d-none");
+
+            let listOfBrands = this.allCars.map(item => item.brand);
+            let setOfListOfBrands = [...new Set(listOfBrands)];
+
+            let htmlCard = setOfListOfBrands.map(item => this.calculations(this.allCars, item)).join("");
+
+            console.log(htmlCard)
+
+            this.$divCards.innerHTML = htmlCard;
+
+
+
+        }
+
+
 
 
     }
