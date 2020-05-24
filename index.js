@@ -592,13 +592,13 @@ class Cars {
 
             this.allCars.sort((a, b) => {
                 if (this.sortOrder === true) {
-                    if (a[sortBy] < b[sortBy]) return -1;
-                    if (a[sortBy] > b[sortBy]) return 1;
-                    return 0;
+
+                    return a[sortBy] - b[sortBy];
+
                 } else if (this.sortOrder === false) {
-                    if (a[sortBy] > b[sortBy]) return -1;
-                    if (a[sortBy] < b[sortBy]) return 1;
-                    return 0;
+
+                    return b[sortBy] - a[sortBy];
+
                 }
 
             });
@@ -862,9 +862,10 @@ class Cars {
 
             this.$divCards.innerHTML = htmlCard;
 
-
-
         }
+
+
+
 
 
 
