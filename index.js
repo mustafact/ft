@@ -408,6 +408,7 @@ class Cars {
 
                     this.transformDataEnteredIntoTextareaIntoArrayOfObjects();
 
+
                     this.saveData();
 
                 } else {
